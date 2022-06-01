@@ -8,10 +8,28 @@
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $confirm_password = password_hash($_POST["confirm_password"], PASSWORD_DEFAULT);
 
+        //Query buat cek username atau password udah ada
+        $sql = "SELECT * FROM user WHERE username=:username OR email=:email";
+        $stmt = $db->prepare($sql);
+
+        $params = array(
+            "username" => $username,
+            ":email" => $email
+        );
+
+        $stmt->execute($params);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
         //Ngecek kalo misal inputannya ada yang kosong
         if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
             //Ngeluarin pesan perlu diisi semua
             die('Please fill all required fields!');
+        }
+
+        //Ngecek kalo misal username atau email udah ada
+        if ($user) {
+            die('Username or Email already exists!');
         }
 
         //Kalo semua penuh, siapin dulu query buat create atau insert
@@ -36,7 +54,7 @@
         if ($_POST["password"] === $_POST["confirm_password"]) {
             //Nyimpen persiapan query tadi ke parameter atau atribut tabel
             $save = $stmt->execute($params);
-            $save_copy = $stmt_copy->execute($params_copy);
+            $stmt_copy->execute($params_copy);
             if ($save) {
                 //Kalo misal berhasil disimpen, balik ke index.php
                 header("Location: index.php");
