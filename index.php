@@ -47,6 +47,30 @@
             die('Passwords do not match!');
         }
     }
+
+    if (isset($_POST['login'])) {
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+        $sql = "SELECT * FROM user WHERE email=:email";
+        $stmt = $db->prepare($sql);
+
+        $params = array(
+            ":email" => $email
+        );
+
+        $stmt->execute($params);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            if (password_verify($password, $user["password"])) {
+                session_start();
+                $_SESSION["user"] = $user;
+                header("Location: dashboard/dashboard.html");
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -66,13 +90,11 @@
         <input type="checkbox" id="toggle">
         <div class="signin">
             <h1>Sign In</h1>
-            <form>
-            
-                
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+            <form action="" method="POST" class="box">
+                <input type="email" placeholder="Email" class="email" name="email">
+                <input type="password" placeholder="Password" class="password" name="password">
                 <small> <label for="toggle2">Forgot Password?</label></small>
-                <input type="submit" value="Login">
+                <input type="submit" value="Login" class="submit" name="login">
                 <small>Don't have an account? <label for="toggle">Sign Up</label> </small>
            
             </form>
@@ -82,7 +104,6 @@
         <div class="signup">
             <h1>Create an account</h1>
             <form action="" method="POST" class="box">
-              
                     <input type="text" placeholder="Username" class="username" name="username">
                     <input type="email" placeholder="Email" class="email" name="email">
                     <input type="password" placeholder="Password" class="password" name="password">
@@ -94,12 +115,9 @@
 
         <div class="recover">
             <h1>Enter your email</h1>
-            <form>
-              
-                
-                    <input type="email" placeholder="Email">
-
-                <input type="submit" value="Recover Password">
+            <form action="" method="POST" class="box">
+                    <input type="email" placeholder="Email" class="email" name="email">
+                    <input type="submit" value="Recover Password">
                 <small>Already have an account? <label for="toggle">Sign In</label></small>
             </form>
         </div>
