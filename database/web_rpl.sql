@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 07:03 PM
+-- Generation Time: Jun 01, 2022 at 07:23 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `web_rpl`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `sex` varchar(45) NOT NULL,
+  `phone_number` varchar(45) NOT NULL,
+  `status` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -50,9 +65,34 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `birth_date`, `sex`, `region`, `status`, `user_type`, `p_game`, `p_language`) VALUES
 (9, 'coba', NULL, NULL, 'kitacoba@cek', '$2y$10$cPZ2sbMfiFAi7gXitv35HOd2ai9PEHONR4rrw9cW5R6hy6QO/V/Na', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `username` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `email`, `password`) VALUES
+('coba', 'kitacoba@cek', '$2y$10$cPZ2sbMfiFAi7gXitv35HOd2ai9PEHONR4rrw9cW5R6hy6QO/V/Na');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `profile`
@@ -62,8 +102,20 @@ ALTER TABLE `profile`
   ADD KEY `fk_username` (`username`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`username`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `profile`
