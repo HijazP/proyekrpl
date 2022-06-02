@@ -24,9 +24,6 @@
 
         //Ngecek kalo misal inputannya ada yang kosong
         if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
-          echo '<script>alert("Please Check Your Email for Verification Code")</script>';
- 
-           
             //Ngeluarin pesan perlu diisi semua
             die('Please fill all required fields!');
         }
@@ -132,28 +129,6 @@
             </form>
 
         </div>
-
-        <div class="signup">
-            <h1>Create an account</h1>
-            <form action="" method="POST" class="box">
-                    <input type="text" placeholder="Username" class="username" name="username">
-                    <input type="email" placeholder="Email" class="email" name="email">
-                    <input type="password" placeholder="Password" class="password" name="password">
-                    <input type="password" placeholder="Confirm Password" class="confirm_password" name="confirm_password">
-                <input type="submit" value="Create Account" class="submit" name="register">
-                <small>Already have an account? <label for="toggle">Sign In</label></small>
-            </form>
-        </div>
-
-        <div class="recover">
-            <h1>Enter your email</h1>
-            <form action="" method="POST" class="box">
-                    <input type="email" placeholder="Email" class="email" name="email">
-                    <input type="submit" value="Recover Password">
-                <small>Already have an account? <label for="toggle">Sign In</label></small>
-            </form>
-        </div>
-
     </div>
 </body>
 </html>
