@@ -24,8 +24,8 @@
 
         //Ngecek kalo misal inputannya ada yang kosong
         if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
-           echo "Please "
-           //kalo ditutorial kayak 
+          echo '<script>alert("Please Check Your Email for Verification Code")</script>';
+ 
            
             //Ngeluarin pesan perlu diisi semua
             die('Please fill all required fields!');
@@ -126,7 +126,7 @@
                 <input type="email" placeholder="Email" class="email" name="email">
                 <input type="password" placeholder="Password" class="password" name="password">
                 <small> <label for="toggle2">Forgot Password?</label></small>
-                <input type="submit" value="Login" class="submit" name="login">
+                <input a href = "dashboard.php" type="submit" value="Login" class="submit" name="login">
                 <small>Don't have an account? <label for="toggle">Sign Up</label> </small>
            
             </form>
