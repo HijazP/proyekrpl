@@ -91,7 +91,7 @@ img {
 }
 
 .text-muted {
-  color: var(--color-gray);
+  color: darkgrey;
 }
 
 /*================== NAVBAR =================*/
@@ -376,6 +376,98 @@ main .container .left .profile {
 }
 
 /* ---------------------- FEEDS --------------------- */
+.middle .bg {
+  display: grid;
+}
+
+.middle .bg_item:first-of-type {
+  grid-column: 1 /span 2;
+  grid-row: 1 /span 2;
+}
+
+.middle .bg_item:first-of-type img {
+  border-radius: var(--card-border-radius);
+}
+
+.middle .bg_item:last-of-type {
+  grid-column: 1 /span 2;
+  grid-row: 2 /span 2;
+  margin-top: 1rem;
+}
+
+.middle .bg_item:last-of-type img{
+  width: 7rem;
+  border-radius: 50%;
+  outline: auto;
+  outline-color: white;
+}
+
+.middle .feed .action {
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle .feed .action1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.middle .feed .action1 .uname{
+  margin-left: 0.6rem;
+}
+
+.middle .feed .action1 .uname h2{
+  font-size: x-large;
+}
+
+.middle .feed .action1 .uname h4{
+  font-size: medium;
+  color: darkgrey;
+}
+
+
+.middle .feed .games{
+  margin-top: 1rem;
+  margin-left: 0.6rem;
+  width: 20%;
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-primary);
+}
+
+.middle .feed .games h2{
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.middle .feed .gamet{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  margin-left: 0.6rem;
+  width: 15%;
+  gap: 1rem;
+}
+
+
+.middle .request .poto{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.middle .request .poto .profile-photo{
+  width: 15%;
+}
+
+.middle .request .poto .gamep{
+  display: flex;
+  justify-content: right;
+  width: 10%;
+  height: 10%;
+  gap: 0.5rem;
+}
 
 .middle .request {
   margin-top: 1rem;
@@ -384,32 +476,21 @@ main .container .left .profile {
   outline-color: var(--color-primary);
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
-  margin-bottom: 0.7rem;
 }
 
-.middle .request .info {
+
+.middle .request .action {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
 }
 
-.middle .request .info .profile-photo {
-  display: flex;
-  width: 10%;
-  gap: 1rem;
+.middle .request .action h3 {
+  font-size: large;
 }
 
-.middle .request .info .uname {
-  font-size: larger;
-  gap: 1rem;
+.middle .request .action p {
+  font-size: medium;
 }
-
-.middle .request .info .action{
-  display: flex;
-  justify-content: end;
-  font-size: small;
-  margin-left: 7rem;
-}
-
 
 .middle .feeds .feed {
   background: var(--color-white);
