@@ -24,6 +24,9 @@
 
         //Ngecek kalo misal inputannya ada yang kosong
         if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
+           echo "Please "
+           //kalo ditutorial kayak 
+           
             //Ngeluarin pesan perlu diisi semua
             die('Please fill all required fields!');
         }
@@ -59,7 +62,7 @@
             if ($save) {
                 //Kalo misal berhasil disimpen, balik ke index.php
                 //Kode html
-                
+               
                 header("Location: index.php");
             }
         }
