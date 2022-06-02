@@ -12,6 +12,7 @@
         $sql = "SELECT * FROM user WHERE username=:username OR email=:email";
         $stmt = $db->prepare($sql);
 
+        //Param
         $params = array(
             "username" => $username,
             ":email" => $email
