@@ -87,6 +87,14 @@
                 $_SESSION["user"] = $user;
                 header("Location: dashboard/dashboard.html");
             }
+            else
+            {
+                die('Wrong password!');
+            }
+        }
+        else
+        {
+            die('Wrong email!');
         }
     }
 ?>
