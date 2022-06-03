@@ -3,6 +3,7 @@
 
     if (isset($_POST['register'])) {
         //Masukin inputan dari html ke variabel-variabel berikut
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -24,7 +25,7 @@
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Ngecek kalo misal inputannya ada yang kosong
-        if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
+        if (empty ($name) || empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
             //Ngeluarin pesan perlu diisi semua
             echo '<script>alert("Please fill all required fields!")</script>';
             return false;
@@ -39,7 +40,7 @@
         //Kalo semua penuh, siapin dulu query buat create atau insert
         $sql = "INSERT INTO user (username, email, password) VALUES (:username, :email, :password)";
         $stmt = $db->prepare($sql);
-        $copy = "INSERT INTO profile (username, email, password, avatar) VALUE (:username, :email, :password, :avatar)";
+        $copy = "INSERT INTO profile (name, username, email, password, avatar) VALUE (:name, :username, :email, :password, :avatar)";
         $stmt_copy = $db->prepare($copy);
 
         //bikin array buat masukin variabel ke atribut tabel
@@ -49,6 +50,7 @@
             ":password" => $password,
         );
         $params_copy = array(
+            ":name" => $name,
             ":username" => $username,
             ":email" => $email,
             ":password" => $password,

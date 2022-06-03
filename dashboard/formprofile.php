@@ -1,5 +1,21 @@
 <?php
+    require_once("../config2.php");
     session_start();
+
+    $email = $_SESSION["user"]["email"];
+    
+    $sql = "SELECT * FROM profile WHERE email=:email";
+    $stmt = $db->prepare($sql);
+
+    $params = array(
+        ":email" => $email
+    );
+
+    $stmt->execute($params);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $_SESSION["user"] = $user;
 
     if (!isset($_SESSION["user"])) {
         header("Location: index.php");
@@ -8,33 +24,63 @@
     if (isset($_POST["update_general"])) {
         $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
         $status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRING);
-        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+        $username = $_SESSION["user"]["username"];
         $birth_date = $_POST["birth_date"];
         $sex = filter_input(INPUT_POST, "sex", FILTER_SANITIZE_STRING);
         $region = filter_input(INPUT_POST, "region", FILTER_SANITIZE_STRING);
 
-        if (empty($name) || empty($username)) {
-            die("Name or Username must be filled!");
+        if (empty($name)) {
+            die("Name must be filled!");
         }
 
-        $sql = "UPDATE profile SET username=:username, status=:status, name=:name, birth_date=:birth_date, sex=:sex, region=:region WHERE username=:username";
+        $sql = "UPDATE profile SET status=:status, name=:name, birth_date=:birth_date, sex=:sex, region=:region WHERE username='$username'";
         $stmt = $db->prepare($sql);
 
         $param = array(
-            ":name" => $username,
+            ":name" => $name,
             ":status" => $status,
-            ":username" => $username,
             ":birth_date" => $birth_date,
             ":sex" => $sex,
             ":region" => $region
         );
 
+        $stmt->execute($param);
 
+        header("Location: userprofile.php?update=succes");
     }
 
     if (isset($_POST["update_account_details"])) {
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+
+        if (empty($_POST["password"])) {
+            die("Password must be filled!");
+        }
+
+        $sql = "UPDATE profile SET password=:password, email=:email WHERE username='$username'";
+        $sql2 = "UPDATE user SET password=:password, email=:email WHERE username='$username'";
+        $stmt = $db->prepare($sql);
+        $stmt2 = $db->prepare($sql2);
+
+        $params = array(
+            ":password" => $password,
+            ":email" => $email
+        );
+
+        $stmt->execute($params);
+        $stmt2->execute($params);
+
+        header("Location: userprofile.php?update=success");
+    }
+
+    if (isset($_POST["delete"])) {
+        $user = $_SESSION["user"]["username"];
+
+        $sql = "DELETE FROM user WHERE username='$user'";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+
+        header("Location: ../index.php");
     }
 ?>
 
@@ -143,7 +189,7 @@
                     <a class="menu-item">
                         <span><i class="uil uil-setting"></i></span><h3>Settings</h3>
                     </a>
-                    <a class="menu-item">
+                    <a href="logout.php" class="menu-item">
                         <span><i class="uil uil-setting"></i></span><h3>Logout</h3>
                     </a>                        
                 </div>
@@ -154,10 +200,10 @@
                     </div>
                     <div class="handle">
                         <h4>
-                            <?php echo $_SESSION["user"]["username"]?>
+                            <?php echo $_SESSION["user"]["name"]?>
                         </h4>
                         <p class="text-muted">
-                            <?php echo $_SESSION["user"]["email"] ?>
+                            @<?php echo $_SESSION["user"]["email"] ?>
                         </p>
                     </div>
                 </a>
@@ -202,19 +248,20 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                    <button class="btn btn-primary"><h3>Apply</h3></button>
                                 </div>   
  
                             </div>
-
+                            
                             <div class="marginedit">
                             <h2>General</h2>
                             </div>
                             <div class="request1">
 
+                            <form action="" method="POST" class="box">
                                 <h3> Name  </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Name" class="name" name="name" value="<?php echo $_SESSION["user"]["first_name"] ?>">
+                                    <input type="text" placeholder="Name" class="name" name="name" value="<?php echo $_SESSION["user"]["name"] ?>">
                                 </div>
 
                                 <h3> Status </h3>
@@ -229,7 +276,7 @@
 
                                 <h3> Birth Date </h3>
                                 <div class = "requestedit">
-                                    <input type="date" placeholder="birthdate" class="birthdate" name="birthdate" value="<?php echo $_SESSION["user"]["birth_date"] ?>">
+                                    <input type="date" placeholder="birthdate" class="birthdate" name="birth_date" value="<?php echo $_SESSION["user"]["birth_date"] ?>">
                                 </div>
 
                                 <h3> Sex </h3>
@@ -243,8 +290,9 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                    <button class="btn btn-primary" name="update_general"><h3>Apply</h3></button>
                                 </div>   
+                            </form>
                             </div>
 
                             <div class="marginedit">
@@ -263,7 +311,7 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                    <button class="btn btn-primary"><h3>Apply</h3></button>
                                 </div>   
  
                             </div>
@@ -273,6 +321,7 @@
                             </div>
                             <div class="request1">
 
+                            <form action="" method="POST" class="box">
                                 <h3> Password </h3>
                                 <div class = "requestedit">
                                     <input type="password" placeholder="Password" class="password" name="password">
@@ -284,10 +333,10 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a class="btn btn-red"><h3>Delete Account</h3></a>
-                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                    <button class="btn btn-red" name="delete"><h3>Delete Account</h3></button>
+                                    <button class="btn btn-primary" name="update_account_details"><h3>Apply</h3></button>
                                 </div>   
- 
+                            </form>
                             </div>
 
 

@@ -111,7 +111,7 @@
                     <a class="menu-item">
                         <span><i class="uil uil-setting"></i></span><h3>Settings</h3>
                     </a>    
-                    <a class="menu-item">
+                    <a href="logout.php" class="menu-item">
                         <span><i class="uil uil-setting"></i></span><h3>Logout</h3>
                     </a>                     
                 </div>
@@ -122,10 +122,10 @@
                     </div>
                     <div class="handle">
                         <h4>
-                            <?php echo $_SESSION["user"]["username"]?>
+                            <?php echo $_SESSION["user"]["name"]?>
                         </h4>
                         <p class="text-muted">
-                            <?php echo $_SESSION["user"]["email"] ?>
+                            @<?php echo $_SESSION["user"]["username"] ?>
                         </p>
                     </div>
                 </a>
