@@ -50,55 +50,55 @@
                         <div class="notifications-popup">
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-2.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Keke Benjamin</b> accepted your friend request
+                                    <b>User_1</b> accepted your friend request
                                     <small class="text-muted">2 DAYS AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-3.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>John Doe</b> commented on your post
+                                    <b>User_2</b> commented on your post
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-4.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Mary Oppong</b> and <b>283 others </b> liked your post
+                                    <b>User_3</b> and <b>283 others </b> liked your post
                                     <small class="text-muted">4 MINUTES AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-5.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Doris Y. Lartey</b> commented on a post you are tagged in
+                                    <b>User_4</b> commented on a post you are tagged in
                                     <small class="text-muted">2 DAYS AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-6.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Donald Trump</b> commented on a post you are tagged in
+                                    <b>User_5</b> commented on a post you are tagged in
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-7.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>jane Doe</b> commented on your post
+                                    <b>User_6</b> commented on your post
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
@@ -199,63 +199,63 @@
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-2.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Edem Quist</h5>
-                            <p class="text-muted">Just woke up bruh</p>
+                            <h5>User_1</h5>
+                            <p class="text-muted">Cuk mabar</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-3.jpg">
+                            <img src="./images/chad.jpg">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
-                            <h5>Franca Deila</h5>
-                            <p class="text-bold">Received bruh. Thanks!</p>
+                            <h5>User_2</h5>
+                            <p class="text-bold">woi</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-4.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Jane Doe</h5>
-                            <p class="text-bold">ok</p>
+                            <h5>User_3</h5>
+                            <p class="text-bold">sipp</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-5.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Daniella Jackson</h5>
+                            <h5>User_4</h5>
                             <p class="text-bold">2 new messages</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-6.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Juliet Makarey</h5>
-                            <p class="text-muted">lol u right</p>
+                            <h5>User_5</h5>
+                            <p class="text-muted">wkwkwkwk</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-7.jpg">
+                            <img src="./images/chad.jpg">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
-                            <h5>Chantel Msiza</h5>
-                            <p class="text-bold">Birthday Tomorrow!</p>
+                            <h5>User_6</h5>
+                            <p class="text-bold">main kui</p>
                         </div>
                     </div>
                 </div>
@@ -269,10 +269,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-8.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Hajia Bintu</h5>
+                                <h5>User_7</h5>
                                 <p class="text-muted">8 mutual friends</p>
                             </div>
                         </div>
@@ -285,10 +285,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-9.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Jackline Mensah</h5>
+                                <h5>User_8</h5>
                                 <p class="text-muted">2 mutual friends</p>
                             </div>
                         </div>
@@ -301,10 +301,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-10.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Jennifer Lawrence</h5>
+                                <h5>User_9</h5>
                                 <p class="text-muted">19 mutual friends</p>
                             </div>
                         </div>
