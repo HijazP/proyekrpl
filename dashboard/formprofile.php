@@ -154,37 +154,45 @@
                                 </div>
                             </div>
 
-                            <div class="request">
+                            <div class="marginedit">
+                            <h2>Images</h2>
+                            </div>
+                            <div class="request1">
 
                                 <h3> Background Image  </h3>
                                     <div class = "requestedit">
-                                        <input type="file">
-                                    </div>
+                                    <input type="file">
+                                </div>
 
                                 <h3> Profile Image  </h3>
                                     <div class = "requestedit">
-                                        <input type="file">
-                                    </div>
-                    
-                                
+                                    <input type="file">
+                                </div>
+
+                                <div class="actionedit">
+                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                </div>   
+ 
+                            </div>
+
+                            <div class="marginedit">
+                            <h2>General</h2>
+                            </div>
+                            <div class="request1">
+
                                 <h3> Name  </h3>
                                 <div class = "requestedit">
                                     <input type="text" placeholder="Name" class="name" name="name" value="<?php echo $_SESSION["user"]["first_name"] ?>">
                                 </div>
 
+                                <h3> Status </h3>
+                                <div class = "requestedit">
+                                    <input type="text" placeholder="Status" class="status" name="status">
+                                </div>
+
                                 <h3> Username </h3>
                                 <div class = "requestedit">
                                     <input type="text" placeholder="Username" class="username" name="username" value="<?php echo $_SESSION["user"]["username"] ?>">
-                                </div>
-
-                                <h3> Email </h3>
-                                <div class = "requestedit">
-                                    <input type="email" placeholder="Email" class="email" name="email" value="<?php echo $_SESSION["user"]["email"] ?>">
-                                </div>
-
-                                <h3> Password </h3>
-                                <div class = "requestedit">
-                                    <input type="password" placeholder="Password" class="password" name="password">
                                 </div>
 
                                 <h3> Birth Date </h3>
@@ -202,10 +210,15 @@
                                     <input type="text" placeholder="Region" class="region" name="region">
                                 </div>
 
-                                <h3> Status </h3>
-                                <div class = "requestedit">
-                                    <input type="text" placeholder="Status" class="status" name="status">
-                                </div>
+                                <div class="actionedit">
+                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                </div>   
+                            </div>
+
+                            <div class="marginedit">
+                            <h2>Preference</h2>
+                            </div>
+                            <div class="request1">
 
                                 <h3> Preferred Games </h3>
                                 <div class = "requestedit">
@@ -218,11 +231,33 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a href="userprofile.php" class="btn btn-secondary"><h3>Cancel</h3></a>
-                                    <a href="userprofile.php" class="btn btn-primary"><h3>Apply</h3></a>
+                                    <a class="btn btn-primary"><h3>Apply</h3></a>
                                 </div>   
  
-                        </div>
+                            </div>
+
+                            <div class="marginedit">
+                            <h2>Account Details</h2>
+                            </div>
+                            <div class="request1">
+
+                                <h3> Password </h3>
+                                <div class = "requestedit">
+                                    <input type="password" placeholder="Password" class="password" name="password">
+                                </div>
+
+                                <h3> Email </h3>
+                                <div class = "requestedit">
+                                    <input type="email" placeholder="Email" class="email" name="email">
+                                </div>
+
+                                <div class="actionedit">
+                                    <a class="btn btn-primary"><h3>Apply</h3></a>
+                                </div>   
+ 
+                            </div>
+
+
                         </div>
                     </div>
                     <!---------------- END OF FEED 1 ----------------->
