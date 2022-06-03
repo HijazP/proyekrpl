@@ -15,7 +15,7 @@
 
         //Param
         $params = array(
-            "username" => $username,
+            ":username" => $username,
             ":email" => $email
         );
 

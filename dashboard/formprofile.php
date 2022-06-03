@@ -4,6 +4,38 @@
     if (!isset($_SESSION["user"])) {
         header("Location: index.php");
     }
+
+    if (isset($_POST["update_general"])) {
+        $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
+        $status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+        $birth_date = $_POST["birth_date"];
+        $sex = filter_input(INPUT_POST, "sex", FILTER_SANITIZE_STRING);
+        $region = filter_input(INPUT_POST, "region", FILTER_SANITIZE_STRING);
+
+        if (empty($name) || empty($username)) {
+            die("Name or Username must be filled!");
+        }
+
+        $sql = "UPDATE profile SET username=:username, status=:status, name=:name, birth_date=:birth_date, sex=:sex, region=:region WHERE username=:username";
+        $stmt = $db->prepare($sql);
+
+        $param = array(
+            ":name" => $username,
+            ":status" => $status,
+            ":username" => $username,
+            ":birth_date" => $birth_date,
+            ":sex" => $sex,
+            ":region" => $region
+        );
+
+
+    }
+
+    if (isset($_POST["update_account_details"])) {
+        $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +44,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nokoSocial - Responsive Social Media Website Using HTML, CSS & JavaScript</title>
+    <title>Connect.gg</title>
     <!-- ICONSCOUT CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <!-- STYLESHEET -->
@@ -50,55 +82,55 @@
                         <div class="notifications-popup">
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-2.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Keke Benjamin</b> accepted your friend request
+                                    <b>User_1</b> accepted your friend request
                                     <small class="text-muted">2 DAYS AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-3.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>John Doe</b> commented on your post
+                                    <b>User_2</b> commented on your post
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-4.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Mary Oppong</b> and <b>283 others </b> liked your post
+                                    <b>User_3</b> and <b>283 others </b> liked your post
                                     <small class="text-muted">4 MINUTES AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-5.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Doris Y. Lartey</b> commented on a post you are tagged in
+                                    <b>User_4</b> commented on a post you are tagged in
                                     <small class="text-muted">2 DAYS AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-6.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>Donald Trump</b> commented on a post you are tagged in
+                                    <b>User_5</b> commented on a post you are tagged in
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
                             <div>
                                 <div class="profile-photo">
-                                    <img src="./images/profile-7.jpg">
+                                    <img src="./images/chad.jpg">
                                 </div>
                                 <div class="notification-body">
-                                    <b>jane Doe</b> commented on your post
+                                    <b>User_6</b> commented on your post
                                     <small class="text-muted">1 HOUR AGO</small>
                                 </div>
                             </div>
@@ -150,7 +182,7 @@
                                     <img src="./images/propil.jpg">
                                 </div>
                                 <div class="bg_item">
-                                    <img src="./images/profile-1.jpg">
+                                    <img src="<?php echo $_SESSION["user"]["avatar"] ?>">
                                 </div>
                             </div>
 
@@ -187,27 +219,27 @@
 
                                 <h3> Status </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Status" class="status" name="status">
+                                    <input type="text" placeholder="Status" class="status" name="status" value="<?php echo $_SESSION["user"]["status"] ?>">
                                 </div>
 
                                 <h3> Username </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Username" class="username" name="username" value="<?php echo $_SESSION["user"]["username"] ?>">
+                                    <h5><?php echo $_SESSION["user"]["username"] ?></h5>
                                 </div>
 
                                 <h3> Birth Date </h3>
                                 <div class = "requestedit">
-                                    <input type="date" placeholder="birthdate" class="birthdate" name="birthdate">
+                                    <input type="date" placeholder="birthdate" class="birthdate" name="birthdate" value="<?php echo $_SESSION["user"]["birth_date"] ?>">
                                 </div>
 
                                 <h3> Sex </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Sex" class="sex" name="sex">
+                                    <input type="text" placeholder="Sex" class="sex" name="sex" value="<?php echo $_SESSION["user"]["sex"] ?>">
                                 </div>
 
                                 <h3> Region </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Region" class="region" name="region">
+                                    <input type="text" placeholder="Region" class="region" name="region" value="<?php echo $_SESSION["user"]["region"] ?>">
                                 </div>
 
                                 <div class="actionedit">
@@ -248,7 +280,7 @@
 
                                 <h3> Email </h3>
                                 <div class = "requestedit">
-                                    <input type="email" placeholder="Email" class="email" name="email">
+                                    <input type="email" placeholder="Email" class="email" name="email" value="<?php echo $_SESSION["user"]["email"] ?>">
                                 </div>
 
                                 <div class="actionedit">
@@ -286,63 +318,63 @@
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-2.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Edem Quist</h5>
-                            <p class="text-muted">Just woke up bruh</p>
+                            <h5>User_1</h5>
+                            <p class="text-muted">Cuk mabar</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-3.jpg">
+                            <img src="./images/chad.jpg">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
-                            <h5>Franca Deila</h5>
-                            <p class="text-bold">Received bruh. Thanks!</p>
+                            <h5>User_2</h5>
+                            <p class="text-bold">woi</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-4.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Jane Doe</h5>
-                            <p class="text-bold">ok</p>
+                            <h5>User_3</h5>
+                            <p class="text-bold">sipp</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-5.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Daniella Jackson</h5>
+                            <h5>User_4</h5>
                             <p class="text-bold">2 new messages</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-6.jpg">
+                            <img src="./images/chad.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Juliet Makarey</h5>
-                            <p class="text-muted">lol u right</p>
+                            <h5>User_5</h5>
+                            <p class="text-muted">wkwkwkwk</p>
                         </div>
                     </div>
                     <!----- MESSAGE ----->
                     <div class="message">
                         <div class="profile-photo">
-                            <img src="./images/profile-7.jpg">
+                            <img src="./images/chad.jpg">
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
-                            <h5>Chantel Msiza</h5>
-                            <p class="text-bold">Birthday Tomorrow!</p>
+                            <h5>User_6</h5>
+                            <p class="text-bold">main kui</p>
                         </div>
                     </div>
                 </div>
@@ -356,10 +388,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-8.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Hajia Bintu</h5>
+                                <h5>User_7</h5>
                                 <p class="text-muted">8 mutual friends</p>
                             </div>
                         </div>
@@ -372,10 +404,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-9.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Jackline Mensah</h5>
+                                <h5>User_8</h5>
                                 <p class="text-muted">2 mutual friends</p>
                             </div>
                         </div>
@@ -388,10 +420,10 @@
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
-                                <img src="./images/profile-10.jpg">
+                                <img src="./images/chad.jpg">
                             </div>
                             <div>
-                                <h5>Jennifer Lawrence</h5>
+                                <h5>User_9</h5>
                                 <p class="text-muted">19 mutual friends</p>
                             </div>
                         </div>
