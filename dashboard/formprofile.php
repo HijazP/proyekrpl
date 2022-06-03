@@ -110,6 +110,9 @@
                     </a>
                     <a class="menu-item">
                         <span><i class="uil uil-setting"></i></span><h3>Settings</h3>
+                    </a>
+                    <a class="menu-item">
+                        <span><i class="uil uil-logout"></i></span><h3>Logout</h3>
                     </a>                        
                 </div>
                 <!------------------- END OF SIDEBAR -------------------->
