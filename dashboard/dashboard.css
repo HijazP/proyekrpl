@@ -499,6 +499,20 @@ main .container .left .profile {
   border-radius: var(--card-border-radius);
 }
 
+.middle .request1 {
+  margin-top: 0.5rem;
+  margin-bottom: 1.6rem;
+  background: var(--color-white);
+  outline: auto;
+  outline-color: var(--color-primary);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+}
+
+.middle .marginedit {
+  margin-left: 1rem;
+}
+
 .middle .requestedit {
   margin-top: 0.4rem;
   margin-bottom: 1rem;
