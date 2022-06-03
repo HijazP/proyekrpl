@@ -91,6 +91,11 @@ img {
   color: var(--color-primary);
 }
 
+.btn-red {
+  background-color: crimson;
+  color: white;
+}
+
 .text-bold {
   font-weight: 500;
 }

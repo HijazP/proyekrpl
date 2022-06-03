@@ -284,6 +284,7 @@
                                 </div>
 
                                 <div class="actionedit">
+                                    <a class="btn btn-red"><h3>Delete Account</h3></a>
                                     <a class="btn btn-primary"><h3>Apply</h3></a>
                                 </div>   
  
