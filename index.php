@@ -110,14 +110,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In & Sign Up</title>
+    <title>Connect.gg</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
 
+    <div class="container">
         <input type="checkbox" id="toggle">
         <div class="signin">
             <h1>Sign In</h1>
