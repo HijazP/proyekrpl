@@ -169,7 +169,7 @@
                                 
                                 <h3> Name  </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Name" class="name" name="name">
+                                    <input type="text" placeholder="Name" class="name" name="name" value="<?php echo $_SESSION["user"]["first_name"] ?>">
                                 </div>
 
                                 <h3> Username </h3>
@@ -179,7 +179,7 @@
 
                                 <h3> Email </h3>
                                 <div class = "requestedit">
-                                    <input type="email" placeholder="Email" class="email" name="email">
+                                    <input type="email" placeholder="Email" class="email" name="email" value="<?php echo $_SESSION["user"]["email"] ?>">
                                 </div>
 
                                 <h3> Password </h3>
