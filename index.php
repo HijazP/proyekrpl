@@ -7,6 +7,7 @@
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $confirm_password = password_hash($_POST["confirm_password"], PASSWORD_DEFAULT);
+        $avatar = "images/chad.jpg";
 
         //Query buat cek username atau password udah ada
         $sql = "SELECT * FROM user WHERE username=:username OR email=:email";
@@ -25,7 +26,9 @@
         //Ngecek kalo misal inputannya ada yang kosong
         if (empty($username) || empty($email) || empty($_POST["password"]) || empty($_POST["confirm_password"])) {
             //Ngeluarin pesan perlu diisi semua
-            die('Please fill all required fields!');
+            echo '<script>alert("Please fill all required fields!")</script>';
+            return false;
+            //die('Please fill all required fields!');
         }
 
         //Ngecek kalo misal username atau email udah ada
@@ -36,7 +39,7 @@
         //Kalo semua penuh, siapin dulu query buat create atau insert
         $sql = "INSERT INTO user (username, email, password) VALUES (:username, :email, :password)";
         $stmt = $db->prepare($sql);
-        $copy = "INSERT INTO profile (username, email, password) VALUE (:username, :email, :password)";
+        $copy = "INSERT INTO profile (username, email, password, avatar) VALUE (:username, :email, :password, :avatar)";
         $stmt_copy = $db->prepare($copy);
 
         //bikin array buat masukin variabel ke atribut tabel
@@ -49,6 +52,7 @@
             ":username" => $username,
             ":email" => $email,
             ":password" => $password,
+            ":avatar" => $avatar
         );
 
         //Ngecek kalo misal password sama confirm password nilainya sama
@@ -58,8 +62,6 @@
             $stmt_copy->execute($params_copy);
             if ($save) {
                 //Kalo misal berhasil disimpen, balik ke index.php
-                //Kode html
-               
                 header("Location: index.php");
             }
         }
@@ -73,7 +75,7 @@
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-        $sql = "SELECT * FROM user WHERE email=:email";
+        $sql = "SELECT * FROM profile WHERE email=:email";
         $stmt = $db->prepare($sql);
 
         $params = array(
@@ -88,7 +90,7 @@
             if (password_verify($password, $user["password"])) {
                 session_start();
                 $_SESSION["user"] = $user;
-                header("Location: dashboard/dashboard.html");
+                header("Location: dashboard/dashboard.php");
             }
             else
             {
@@ -129,6 +131,27 @@
             </form>
 
         </div>
+                <div class="signup">
+            <h1>Create an account</h1>
+            <form action="" method="POST" class="box">
+                    <input type="text" placeholder="Username" class="username" name="username">
+                    <input type="email" placeholder="Email" class="email" name="email">
+                    <input type="password" placeholder="Password" class="password" name="password">
+                    <input type="password" placeholder="Confirm Password" class="confirm_password" name="confirm_password">
+                <input a href = "index.php" type="submit" value="Create Account" class="submit" name="register">
+                <small>Already have an account? <label for="toggle">Sign In</label></small>
+            </form>
+        </div>
+
+        <div class="recover">
+            <h1>Enter your email</h1>
+            <form action="" method="POST" class="box">
+                    <input type="email" placeholder="Email" class="email" name="email">
+                    <input type="submit" value="Recover Password">
+                <small>Already have an account? <label for="toggle">Sign In</label></small>
+            </form>
+        </div>
+
     </div>
 </body>
 </html>

@@ -1,10 +1,18 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION["user"])) {
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nokoSocial - Responsive Social Media Website Using HTML, CSS & JavaScript</title>
+    <title>Connect.gg</title>
     <!-- ICONSCOUT CDN -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
     <!-- STYLESHEET -->
@@ -27,9 +35,9 @@
 
                 <!-------------------- SIDEBAR ------------------------->
                 <div class="sidebar">
-                    <a href="dashboard.html" class="menu-item active">
+                    <a href="dashboard.php" class="menu-item active">
                         <span><i class="uil uil-home"></i></span><h3>Home</h3>
-                    </a> 
+                    </a>
                     <a class="menu-item">
                         <span><i class="uil uil-search"></i></span><h3>Service</h3>
                     </a>
@@ -105,17 +113,17 @@
                     </a>                        
                 </div>
                 <!------------------- END OF SIDEBAR -------------------->
-                <a href="userprofile.html" class="profile">
+                <a href="userprofile.php" class="profile">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <img src="<?php echo $_SESSION["user"]["avatar"] ?>">
                     </div>
                     <div class="handle">
-                        <h4>Diana Ayi</h4>
+                        <h4><?php echo $_SESSION["user"]["username"]?></h4>
                         <p class="text-muted">
-                            @dayi
+                            <?php echo $_SESSION["user"]["email"] ?>
                         </p>    
                     </div>
-                </a>>
+                </a>
             </div>
             <!------------------- END OF LEFT -------------------->
 
@@ -131,33 +139,56 @@
                 <div class="feeds">
                     <!------------------- FEED 1 --------------------->
                     <div class="feed">
-                        <div class="bg">
-                            <div class="bg_item">
-                                <img src="./images/propil.jpg">
+                        <input type="submit" value="Filter" class="btn btn-primary">
+
+                        <div class="request-friend">
+                            <!----- REQUEST 1 ----->
+                            <div class="request">
+                                <div class="poto">
+                                    <div class="profile-photo">
+                                        <img src="./images/chad.jpg">
+                                    </div>
+                                    <div class="gamep">
+                                        <img src="./images/val.jpg">
+                                        <img src="./images/csgo.png">
+                                        <img src="./images/apex.png">
+                                    </div>
+                                </div>
+
+                                <div class="action">
+                                            <div class="uname">
+                                                <h3>@ripkimn</h3>
+                                                <p class="text-muted">lesgooo yea yea</p>
+                                            </div>
+                                         <a href="profile.php" class="btn btn-primary"><h3>View Profile</h3></a>
+                                </div>      
                             </div>
-                            <div class="bg_item">
-                                <img src="./images/chad.jpg">
+
+                            <!----- REQUEST 1 ----->
+                            <div class="request">
+                                <div class="poto">
+                                    <div class="profile-photo">
+                                        <img src="./images/chad.jpg">
+                                    </div>
+                                    <div class="gamep">
+                                        <img src="./images/val.jpg">
+                                        <img src="./images/csgo.png">
+                                        <img src="./images/apex.png">
+                                    </div>
+                                </div>
+
+                                <div class="action">
+                                            <div class="uname">
+                                                <h3>@ripkimn</h3>
+                                                <p class="text-muted">lesgooo yea yea</p>
+                                            </div>
+                                         <a href="profile.php" class="btn btn-primary"><h3>View Profile</h3></a>
+                                </div>      
                             </div>
-                        </div>
-
-                        <div class="action1">
-                            <div class="uname">
-                                <h2>Ripki anjai</h2>
-                                <h4>@ripkimn</h4>
-                            </div>
-                            <a class="btn btn-primary"><h4>Add Friend</h4></a>
-                        </div>
-
-                        <div class="games">
-                            <h2>Games</h2>
-                        </div>
-
-                        <div class="gamet">
-                            <img src="./images/val.jpg">
-                            <img src="./images/csgo.png">
-                            <img src="./images/apex.png">
-                         </div>
-
+                            
+                            
+                            
+                        </div>  
                     </div>
                     <!---------------- END OF FEED 1 ----------------->
                 </div>

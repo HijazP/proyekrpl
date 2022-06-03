@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION["user"])) {
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +35,7 @@
 
                 <!-------------------- SIDEBAR ------------------------->
                 <div class="sidebar">
-                    <a href="dashboard.html" class="menu-item active">
+                    <a href="dashboard.php" class="menu-item active">
                         <span><i class="uil uil-home"></i></span><h3>Home</h3>
                     </a>
                     <a class="menu-item">
@@ -105,18 +113,20 @@
                     </a>                        
                 </div>
                 <!------------------- END OF SIDEBAR -------------------->
-                <a href="userprofile.html" class="profile">
+                <a href="userprofile.php" class="profile">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <img src="<?php echo $_SESSION["user"]["avatar"] ?>">
                     </div>
                     <div class="handle">
-                        <h4>Diana Ayi</h4>
+                        <h4>
+                            <?php echo $_SESSION["user"]["username"]?>
+                        </h4>
                         <p class="text-muted">
-                            @dayi
-                        </p>    
+                            <?php echo $_SESSION["user"]["email"] ?>
+                        </p>
                     </div>
                 </a>
-            </div>
+                </div>
             <!------------------- END OF LEFT -------------------->
 
             <!--======================== MIDDLE ==========================-->
@@ -161,7 +171,7 @@
 
                                 <h3> Username </h3>
                                 <div class = "requestedit">
-                                    <input type="text" placeholder="Username" class="username" name="username">
+                                    <input type="text" placeholder="Username" class="username" name="username" value="<?php echo $_SESSION["user"]["username"] ?>">
                                 </div>
 
                                 <h3> Email </h3>

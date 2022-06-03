@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION["user"])) {
+        header("Location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +35,7 @@
 
                 <!-------------------- SIDEBAR ------------------------->
                 <div class="sidebar">
-                    <a href="dashboard.html" class="menu-item active">
+                    <a href="dashboard.php" class="menu-item active">
                         <span><i class="uil uil-home"></i></span><h3>Home</h3>
                     </a>
                     <a class="menu-item">
@@ -105,18 +113,20 @@
                     </a>                        
                 </div>
                 <!------------------- END OF SIDEBAR -------------------->
-                <a href="userprofile.html" class="profile">
+                <a href="userprofile.php" class="profile">
                     <div class="profile-photo">
-                        <img src="./images/profile-1.jpg">
+                        <img src="<?php echo $_SESSION["user"]["avatar"] ?>">
                     </div>
                     <div class="handle">
-                        <h4>Diana Ayi</h4>
+                        <h4>
+                            <?php echo $_SESSION["user"]["username"]?>
+                        </h4>
                         <p class="text-muted">
-                            @dayi
-                        </p>    
+                            <?php echo $_SESSION["user"]["email"] ?>
+                        </p>
                     </div>
                 </a>
-            </div>
+                </div>
             <!------------------- END OF LEFT -------------------->
 
             <!--======================== MIDDLE ==========================-->
@@ -136,16 +146,16 @@
                                 <img src="./images/propil.jpg">
                             </div>
                             <div class="bg_item">
-                                <img src="./images/profile-1.jpg">
+                                <img src="<?php echo $_SESSION["user"]["avatar"]?>">
                             </div>
                         </div>
 
                         <div class="action1">
                             <div class="uname">
-                                <h2>Diana Ayi</h2>
-                                <h4>@dayi</h4>
+                                <h2><?php echo $_SESSION["user"]["username"]?></h2>
+                                <h4><?php echo $_SESSION["user"]["email"]?></h4>
                             </div>
-                            <a href="formprofile.html" class="btn btn-primary"><h4>Edit Profile</h4></a>
+                            <a href="formprofile.php" class="btn btn-primary"><h4>Edit Profile</h4></a>
                         </div>
 
                         <div class="games">
