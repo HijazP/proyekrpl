@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 07:23 PM
+-- Generation Time: Jun 03, 2022 at 08:48 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -55,15 +55,16 @@ CREATE TABLE `profile` (
   `status` varchar(45) DEFAULT NULL,
   `user_type` varchar(45) DEFAULT NULL,
   `p_game` varchar(45) DEFAULT NULL,
-  `p_language` varchar(45) DEFAULT NULL
+  `p_language` varchar(45) DEFAULT NULL,
+  `avatar` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `birth_date`, `sex`, `region`, `status`, `user_type`, `p_game`, `p_language`) VALUES
-(9, 'coba', NULL, NULL, 'kitacoba@cek', '$2y$10$cPZ2sbMfiFAi7gXitv35HOd2ai9PEHONR4rrw9cW5R6hy6QO/V/Na', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `profile` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `birth_date`, `sex`, `region`, `status`, `user_type`, `p_game`, `p_language`, `avatar`) VALUES
+(17, 'coba', NULL, NULL, 'cobakuy@coba', '$2y$10$VKIcM.ogjVAt8Og.ZEOxkuaH6sJlsZoAvvh1yJ2ajQS1Zd96XxWLq', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'images/chad.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,7 +83,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `email`, `password`) VALUES
-('coba', 'kitacoba@cek', '$2y$10$cPZ2sbMfiFAi7gXitv35HOd2ai9PEHONR4rrw9cW5R6hy6QO/V/Na');
+('coba', 'cobakuy@coba', '$2y$10$VKIcM.ogjVAt8Og.ZEOxkuaH6sJlsZoAvvh1yJ2ajQS1Zd96XxWLq');
 
 --
 -- Indexes for dumped tables
@@ -121,7 +122,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

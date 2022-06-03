@@ -218,8 +218,8 @@
                                 </div>
 
                                 <div class="actionedit">
-                                    <a href="userprofile.html" class="btn btn-secondary"><h3>Cancel</h3></a>
-                                    <a href="userprofile.html" class="btn btn-primary"><h3>Apply</h3></a>
+                                    <a href="userprofile.php" class="btn btn-secondary"><h3>Cancel</h3></a>
+                                    <a href="userprofile.php" class="btn btn-primary"><h3>Apply</h3></a>
                                 </div>   
  
                         </div>
