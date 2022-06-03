@@ -22,20 +22,8 @@ body {
 }
 
 .signin,
+.signup,
 .recover {
-  color: white;
-  position: relative;
-  top: 0;
-  left: 0;
-  background: rgba(48, 30, 30, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  backdrop-filter: blur(30px);
-  animation: animateForm 1s ease forwards;
-}
-
-.signup {
   color: white;
   position: relative;
   top: 0;
@@ -120,9 +108,40 @@ p {
   opacity: 0.8;
 }
 
+.container form small {
+  display: block;
+  margin-top: 1rem;
+}
+
 .container form small label {
   color: #7171FE;
   cursor: pointer;
+}
+
+/* sign up */
+.signup {
+  display: none;
+}
+
+#toggle:checked~.signin {
+  display: none;
+}
+
+#toggle:checked~.signup {
+  display: block;
+}
+
+/* recover */
+.recover {
+  display: none;
+}
+
+#toggle2:checked~.recover {
+  display: block;
+}
+
+#toggle2:checked~.signin {
+  display: none;
 }
 
 @keyframes animateForm {
@@ -132,4 +151,12 @@ p {
   to {
     opacity: 1;
   }
+}
+
+#toggle {
+  appearance: none;
+}
+
+#toggle2 {
+  appearance: none;
 }
