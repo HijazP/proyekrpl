@@ -134,6 +134,7 @@
                 <div class="signup">
             <h1>Create an account</h1>
             <form action="" method="POST" class="box">
+                    <input type="text" placeholder= "Name" class="name" name="name">
                     <input type="text" placeholder="Username" class="username" name="username">
                     <input type="email" placeholder="Email" class="email" name="email">
                     <input type="password" placeholder="Password" class="password" name="password">
