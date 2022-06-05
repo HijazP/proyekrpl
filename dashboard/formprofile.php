@@ -50,21 +50,20 @@
     }
 
     if (isset($_POST["update_account_details"])) {
+        $username = $_SESSION["user"]["username"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
 
         if (empty($_POST["password"])) {
             die("Password must be filled!");
         }
 
-        $sql = "UPDATE profile SET password=:password, email=:email WHERE username='$username'";
-        $sql2 = "UPDATE user SET password=:password, email=:email WHERE username='$username'";
+        $sql = "UPDATE profile SET password=:password WHERE username='$username'";
+        $sql2 = "UPDATE user SET password=:password WHERE username='$username'";
         $stmt = $db->prepare($sql);
         $stmt2 = $db->prepare($sql2);
 
         $params = array(
-            ":password" => $password,
-            ":email" => $email
+            ":password" => $password
         );
 
         $stmt->execute($params);
@@ -203,7 +202,7 @@
                             <?php echo $_SESSION["user"]["name"]?>
                         </h4>
                         <p class="text-muted">
-                            @<?php echo $_SESSION["user"]["email"] ?>
+                            @<?php echo $_SESSION["user"]["username"] ?>
                         </p>
                     </div>
                 </a>
@@ -329,7 +328,7 @@
 
                                 <h3> Email </h3>
                                 <div class = "requestedit">
-                                    <input type="email" placeholder="Email" class="email" name="email" value="<?php echo $_SESSION["user"]["email"] ?>">
+                                    <h5><?php echo $_SESSION["user"]["email"] ?></h5>
                                 </div>
 
                                 <div class="actionedit">
